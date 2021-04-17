@@ -20,7 +20,7 @@ include 'estructura.php'
 <html>
 
 <head>
-    <title> Sistema </title>
+    <title> Sistema de Exploración de Archivos </title>
 </head>
 
 <body>
@@ -28,16 +28,188 @@ include 'estructura.php'
         <form class="form-inline">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span type ="button" class="btn btn-outline-dark" id="basic-addon1"> Devolver </span>
+                    <button type="button" class="btn btn-outline-dark" id="basic-addon1"> Atrás </button>
                 </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <div style="margin-right: 20px">
+                    <input type="text" readonly="readonly" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <button type="button" class="btn btn-outline-dark"> Abrir </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarNombre"> Cambiar Nombre </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCrear"> Crear </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCopiar"> Copiar </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalMover"> Mover </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalInfoPermisos"> Informacion Permisos </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPermisos"> Cambiar Permisos </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPropietario"> Cambiar Propietario </button>
+
             </div>
         </form>
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalRenombrar"> Renombrar </button>
-
-
-    
     </nav>
+
+    <div class="modal fade" id="modalCambiarNombre" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Cambiar Nombre </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="nombreNuevo" type="text" class="form-control" placeholder="Ingrese el nuevo nombre">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCrear" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Crear </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="nombreCrear" type="text" class="form-control" placeholder="Ingrese el nombre"> <br>
+                    <input id="crearArchivo" type="radio" name="tipo" value="archivo" checked> Archivo <br>
+                    <input id="crearDirectorio" type="radio" name="tipo" value="directorio"> Directorio
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Eliminar </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> ¿Esta seguro de eliminar el elemento seleccionado? </p>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCopiar" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Copiar </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="direccionCopiar" type="text" class="form-control" placeholder="Ingrese la dirección donde se va a copiar el elemento">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalMover" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Mover </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="direccionMover" type="text" class="form-control" placeholder="Ingrese la dirección donde se va a mover el elemento">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCambiarPermisos" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Cambiar Permisos </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <h5 class="modal-title"> Permisos: </h5>
+                        0: Ningun permiso <br>
+                        1: Permiso de ejecución <br>
+                        2: Permiso de escritura <br>
+                        3: Permiso de ejecución y escritura <br>
+                        4: Permiso de lectura <br>
+                        5: Permiso de lectura y ejecución <br>
+                        6: Permiso de lectura y escritura <br>
+                        7: Todos los permisos <br>
+                    </p>
+                    <p> Ponga el número según los permisos que quiera otorgar: </p> 
+                    <p>
+                    Usuario: <input id="numeroUsuario" type="number" placeholder="Usuario" > <br>
+                    Grupo: &nbsp <input id="numeroGrupo" type="number" placeholder="Grupo"> <br>
+                    Otros:  &nbsp&nbsp <input id="numeroOtros" type="number" placeholder="Otros">
+                    </p> 
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCambiarPropietario" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Cambiar Propietario </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="nombrePropietario" type="text" class="form-control" placeholder="Ingrese el nombre del nuevo propietario">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
