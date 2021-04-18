@@ -12,6 +12,7 @@ echo '
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="funcionalidad.js"></script>
 ';
 include 'estructura.php'
 
@@ -33,7 +34,7 @@ include 'estructura.php'
                 <div style="margin-right: 20px">
                     <input type="text" readonly="readonly" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <button type="button" class="btn btn-outline-dark"> Abrir </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalAbrir"> Abrir </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarNombre"> Cambiar Nombre </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCrear"> Crear </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
@@ -46,6 +47,31 @@ include 'estructura.php'
             </div>
         </form>
     </nav>
+
+    <section class="d-flex flex-row flex-wrap p-4 text-center" id="filesSection">
+		<?php listarElementos($rutaActual); ?>
+	</section>
+
+    <div class="modal fade" id="modalAbrir" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Abrir </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="nombreAbrir" type="text" class="form-control" placeholder="Ingrese el nombre del elemento a abrir">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button onclick="abrirDirectorio()" type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="modalCambiarNombre" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
