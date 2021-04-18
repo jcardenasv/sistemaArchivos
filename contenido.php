@@ -28,13 +28,10 @@ include 'estructura.php'
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
             <div class="input-group">
-                <div class="input-group-prepend">
-                    <button type="button" class="btn btn-outline-dark" id="basic-addon1"> Atrás </button>
-                </div>
                 <div style="margin-right: 20px">
-                    <input type="text" readonly="readonly" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <input id="direccion" type="text" readonly="readonly" class="form-control" style="width: 300px" value= <?= $rutaActual ?>>   
                 </div>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalAbrir"> Abrir </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalIr"> Ir </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarNombre"> Cambiar Nombre </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCrear"> Crear </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
@@ -52,22 +49,22 @@ include 'estructura.php'
 		<?php listarElementos($rutaActual); ?>
 	</section>
 
-    <div class="modal fade" id="modalAbrir" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modalIr" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLongTitle"> Abrir </h4>
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Ir </h4>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="false">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombreAbrir" type="text" class="form-control" placeholder="Ingrese el nombre del elemento a abrir">
+                    <input id="nombreIr" type="text" class="form-control" placeholder="Ingrese la dirección a ir">
                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button onclick="abrirDirectorio()" type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick="irDirectorio()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>

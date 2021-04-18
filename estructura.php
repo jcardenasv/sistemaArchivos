@@ -16,24 +16,22 @@ function listarElementos($ruta)
         if ($letra == "t") {
             continue;
         } elseif ($letra == "d") {
-            echo '<div style="margin-right:20px">
+            echo '<div style="margin-right: 20px; margin-bottom: 30px">
                         <p>' . end($datos) . '</p>
-                        <img src="directorio.png" id="imgDirectorio" height="120" width="120">
+                        <img src="dir1.png" id="imgDirectorio" height="120" width="120" style="margin-top: -15px">
                     </div>';
         } elseif ($letra == "-") {
-            echo '<div style="margin-right:20px">
+            echo '<div style="margin-right: 20px; margin-bottom: 30px">
                         <p>' . end($datos) . '</p>
-                        <img src="archivo.png" id="imgArchivo" height="120" width="120">
+                        <img src="txt.png" id="imgArchivo" height="120" width="120" style="margin-top: -15px">
                     </div>';
         }
     }
 }
-if (isset($_GET["nombreAbrir"])) {
-    $nombre = $_GET["nombreAbrir"];
-    $rutaActual= $rutaActual."/".$nombre;
-    echo $nombre;
-    chdir($rutaActual);
-    // asignar w1 y w2 a dos variables
+
+if (isset($_GET["nombreIr"])) {
+    $nombre = $_GET["nombreIr"];
+    $rutaActual = $nombre;
 }
 
 ?>

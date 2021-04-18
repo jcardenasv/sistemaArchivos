@@ -1,4 +1,4 @@
-function abrirDirectorio() {
-    var nombre = document.getElementById("nombreAbrir");
-    window.location.href = window.location.href + "?nombreAbrir=" + nombre;
+function irDirectorio() {
+    var nombre = document.getElementById("nombreIr").value;
+    window.location.href = "?nombreIr=" + nombre;
 }
