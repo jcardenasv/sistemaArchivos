@@ -29,9 +29,49 @@ function listarElementos($ruta)
     }
 }
 
+function rrmdir($dir) { 
+    $objects = scandir($dir);
+    foreach ($objects as $object) {
+        if ($object != "." && $object != "..") { 
+            if (is_dir($dir."/".$object)){
+                rrmdir($dir."/".$object); 
+            } else{
+                unlink($dir."/".$object);
+            }
+        }
+    }
+    rmdir($dir);
+}
+
 if (isset($_GET["nombreIr"])) {
     $nombre = $_GET["nombreIr"];
     $rutaActual = $nombre;
+}
+
+if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
+    $nombreNuevo = $_GET["nombreNuevo"];
+    $nombreViejo = $_GET["nombreViejo"];
+    rename($nombreViejo, $nombreNuevo);
+}
+
+if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
+    $crear = $_GET["crear"];
+    $tipo = $_GET["tipo"];
+    if($tipo == "archivo"){
+        touch($crear);
+    }else{
+        mkdir($crear);
+    }
+}
+
+if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
+    $eliminar = $_GET["eliminar"];
+    $tipo = $_GET["tipo"];
+    if($tipo == "archivo"){
+        unlink($eliminar);
+    }else{
+        rrmdir($eliminar);
+    }
 }
 
 ?>

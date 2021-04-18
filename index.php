@@ -80,12 +80,12 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombreNuevo" type="text" class="form-control" placeholder="Ingrese el nuevo nombre">
-                    
+                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ingrese la dirección del elemento a cambiar">
+                    <input id="nombreNuevo" type="text" class="form-control" placeholder="Ingrese la dirección con el nuevo nombre">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick="cambiarNombre()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -101,13 +101,14 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombreCrear" type="text" class="form-control" placeholder="Ingrese el nombre"> <br>
-                    <input id="crearArchivo" type="radio" name="tipo" value="archivo" checked> Archivo <br>
-                    <input id="crearDirectorio" type="radio" name="tipo" value="directorio"> Directorio
+                    <input id="direccionCrear" type="text" class="form-control" placeholder="Ingrese la dirección del nuevo elemento"> <br>
+                    <input id="nombreCrear" type="text" class="form-control" placeholder="Ingrese el nombre del nuevo elemento"> <br>
+                    <input id="crearArchivo" type="radio" name="tipoCrear" value="archivo" checked> Archivo <br>
+                    <input id="crearDirectorio" type="radio" name="tipoCrear" value="directorio"> Directorio
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick="crearElemento()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -123,12 +124,14 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p> ¿Esta seguro de eliminar el elemento seleccionado? </p>
-                    
+                    <p>Seleccione si quiere eliminar un archivo o un directorio</p>
+                    <input id="eliminarArchivo" type="radio" name="tipoEliminar" value="archivo" checked> Archivo <br>
+                    <input id="eliminarDirectorio" type="radio" name="tipoEliminar" value="directorio"> Directorio
+                    <input id="eliminar" type="text" class="form-control" placeholder="Ingrese la dirección del elemento a eliminar">   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick="eliminarElemento()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
