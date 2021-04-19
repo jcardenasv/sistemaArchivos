@@ -43,6 +43,29 @@ function rrmdir($dir) {
     rmdir($dir);
 }
 
+function AuxiliarCopiar( $inicio, $destino ) {
+    //Destino debe incluir el nombre de la carpeta que se quiere copiar
+    if ( is_dir( $inicio ) ) {
+        mkdir( $destino );
+        $d = dir( $inicio );
+        while ( FALSE !== ( $entrada1 = $d->read() ) ) {
+            if ( $entrada1 == '.' || $entrada1 == '..' ) {
+                continue;
+            }
+            $entrada2 = $inicio . '/' . $entrada1; 
+            if ( is_dir( $entrada2 ) ) {
+                AuxiliarCopiar( $entrada2, $destino . '/' . $entrada1 );
+                continue;
+            }
+            copy( $entrada2, $destino . '/' . $entrada1 );
+        }
+ 
+        $d->close();
+    }else {
+        copy( $inicio, $destino );
+    }
+}
+
 if (isset($_GET["nombreIr"])) {
     $nombre = $_GET["nombreIr"];
     $rutaActual = $nombre;
@@ -51,6 +74,7 @@ if (isset($_GET["nombreIr"])) {
 if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
     $nombreNuevo = $_GET["nombreNuevo"];
     $nombreViejo = $_GET["nombreViejo"];
+    echo $nombreNuevo."<br>".$nombreViejo;
     rename($nombreViejo, $nombreNuevo);
 }
 
@@ -72,6 +96,12 @@ if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
     }else{
         rrmdir($eliminar);
     }
+}
+if (isset($_GET["CopiarViejo"]) && isset($_GET["nuevaDireccion"])) {
+    $direccionAntigua = $_GET["CopiarViejo"];
+    $direccionNueva= $_GET["nuevaDireccion"];
+    echo $direccionAntigua."<br>".$direccionNueva;
+    AuxiliarCopiar($direccionAntigua, $direccionNueva);
 }
 
 ?>

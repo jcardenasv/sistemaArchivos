@@ -36,3 +36,24 @@ function eliminarElemento(){
     }
     window.location.href = "?eliminar=" + eliminar + "&tipo=" + tipo;
 }
+
+function moverElemento(){
+    var mover;
+}
+
+function copiarElemento(){
+    var CopiarViejo = document.getElementById("CopiarViejo").value;
+    var CopiarNuevo = document.getElementById("CopiarNuevo").value;
+
+    var direccion = CopiarViejo.split("/");
+    var nombre = direccion.pop();
+    var direccionNueva
+
+    if(CopiarNuevo.charAt(CopiarNuevo.length -1) == "/"){
+        direccionNueva = CopiarNuevo.concat(nombre);
+
+    } else{
+        direccionNueva = CopiarNuevo.concat("/",nombre);
+    }
+    window.location.href = "?CopiarViejo=" + CopiarViejo + "&nuevaDireccion=" + direccionNueva;
+}

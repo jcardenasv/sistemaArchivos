@@ -59,7 +59,8 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombreIr" type="text" class="form-control" placeholder="Ingrese la dirección a ir">
+                    <p style = "margin:-2px;"> Ingrese la direccion a la que desea ir:</p>
+                    <input id="nombreIr" type="text" class="form-control" placeholder="Ejemplo: /var/www/html">
                     
                 </div>
                 <div class="modal-footer">
@@ -80,8 +81,10 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ingrese la dirección del elemento a cambiar">
-                    <input id="nombreNuevo" type="text" class="form-control" placeholder="Ingrese la dirección con el nuevo nombre">
+                    <p style = "margin:-2px;"> Ingrese la dirección del elemento a cambiar:</p>
+                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/ElementoQueDeseaCambiarNombre">
+                    <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre para el elemento:</p>
+                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: nuevoNombre">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -147,12 +150,15 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="direccionCopiar" type="text" class="form-control" placeholder="Ingrese la dirección donde se va a copiar el elemento">
+                    <p style = "margin:-2px;">Ingrese la direccion del elemento que desea copiar: </p>
+                    <input id="CopiarViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoACopiar">
+                    <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese la dirección donde desea copiar el elemento:</p>
+                    <input id="CopiarNuevo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeCopia">
                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button type="button" onclick="copiarElemento()" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -168,12 +174,14 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="direccionMover" type="text" class="form-control" placeholder="Ingrese la dirección donde se va a mover el elemento">
-                    
+                    <p style = "margin:-2px;">Ingrese la dirección del elemento que desea mover:</p>
+                    <input id="direccionMover" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/nombreElemento">
+                    <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese la dirección donde se va a mover el elemento:</p>
+                    <input id="direccionMover" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeVaAMover">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick = "moverElemento()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
