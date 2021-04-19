@@ -37,13 +37,30 @@ include 'estructura.php'
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCopiar"> Copiar </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalMover"> Mover </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalInfoPermisos"> Informacion Permisos </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalInfPermisos"> Informacion Permisos </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPermisos"> Cambiar Permisos </button>
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPropietario"> Cambiar Propietario </button>
 
             </div>
         </form>
     </nav>
+
+    <div class="modal-dialog modal-dialog-centered" role="document" style="display:<?= $mostrar ?>;margin-top:-200px; margin-bottom:-200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle"> Información de Permisos </h4>
+            </div>
+            <div class="modal-body">
+                <h4><?= $titulo?></h4>
+                <p>Permisos: <?= $permisos?></p>
+                <p>Propietario: <?= $propietario?></p>
+                <p>Grupo: <?= $grupo?></p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="cerrar()" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 
     <section class="d-flex flex-row flex-wrap p-4 text-center" id="filesSection">
 		<?php listarElementos($rutaActual); ?>
@@ -82,7 +99,7 @@ include 'estructura.php'
                 </div>
                 <div class="modal-body">
                     <p style = "margin:-2px;"> Ingrese la dirección del elemento a cambiar:</p>
-                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/ElementoQueDeseaCambiarNombre">
+                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaCambiarNombre">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre para el elemento:</p>
                     <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: nuevoNombre">
                 </div>
@@ -104,8 +121,14 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="direccionCrear" type="text" class="form-control" placeholder="Ingrese la dirección del nuevo elemento"> <br>
-                    <input id="nombreCrear" type="text" class="form-control" placeholder="Ingrese el nombre del nuevo elemento"> <br>
+                    <p style = "margin:-2px;"> Ingrese la dirección donde quiere ubicar el nuevo elemento:</p>
+                    <input id="direccionCrear" type="text" class="form-control" placeholder="Ejemplo: /var/www/html">
+
+                    <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre del nuevo elemento:</p>
+                    <input id="nombreCrear" type="text" class="form-control" placeholder="Ejemplo: nombre"><br>
+                    
+                    <p>Seleccione si quiere crear un archivo o un directorio:</p>
+
                     <input id="crearArchivo" type="radio" name="tipoCrear" value="archivo" checked> Archivo <br>
                     <input id="crearDirectorio" type="radio" name="tipoCrear" value="directorio"> Directorio
                 </div>
@@ -127,10 +150,13 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Seleccione si quiere eliminar un archivo o un directorio</p>
+
+                    <p>Seleccione si quiere eliminar un archivo o un directorio:</p>
+
                     <input id="eliminarArchivo" type="radio" name="tipoEliminar" value="archivo" checked> Archivo <br>
-                    <input id="eliminarDirectorio" type="radio" name="tipoEliminar" value="directorio"> Directorio
-                    <input id="eliminar" type="text" class="form-control" placeholder="Ingrese la dirección del elemento a eliminar">   
+                    <input id="eliminarDirectorio" type="radio" name="tipoEliminar" value="directorio"> Directorio  
+                    <p style="margin-top:20px; margin-bottom:-2px;">Ingrese la dirección del elemento a eliminar:</p>
+                    <input id="eliminar" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaEliminar">   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -175,13 +201,34 @@ include 'estructura.php'
                 </div>
                 <div class="modal-body">
                     <p style = "margin:-2px;">Ingrese la dirección del elemento que desea mover:</p>
-                    <input id="direccionMover" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/nombreElemento">
+                    <input id="direccionMoverViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/nombreElemento">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese la dirección donde se va a mover el elemento:</p>
-                    <input id="direccionMover" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeVaAMover">
+                    <input id="direccionMoverNuevo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeVaAMover">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button onclick = "moverElemento()" type="button" class="btn btn-primary">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalInfPermisos" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle"> Información de Permisos </h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Ingrese la dirección del elemento al cual quiere ver sus permisos:</p>
+                    <input id="verPermisos" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaVerPermisos">   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInfPermisos2" onclick="verPermisos()">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -234,7 +281,10 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input id="nombrePropietario" type="text" class="form-control" placeholder="Ingrese el nombre del nuevo propietario">
+                    <p style = "margin:-2px;">Ingrese la dirección del elemento al que desea cambiarle el propietario:</p>
+                    <input id="direccionPropietario" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/prueba">
+                    <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nombre del usuario:</p>
+                    <input id="nombreUsuario" type="text" class="form-control" placeholder="Ejemplo: usuario">
                     
                 </div>
                 <div class="modal-footer">
@@ -244,6 +294,8 @@ include 'estructura.php'
             </div>
         </div>
     </div>
+
+ 
 
 </body>
 

@@ -38,7 +38,21 @@ function eliminarElemento(){
 }
 
 function moverElemento(){
-    var mover;
+    console.log("entro a funcion");
+    var direccionViejo = document.getElementById("direccionMoverViejo").value;
+    var direccionNuevo = document.getElementById("direccionMoverNuevo").value;
+    var direccion = direccionViejo.split("/");
+    var nombre = direccion.pop();
+    var direccionNueva;
+
+    if(direccionNuevo.charAt(direccionNuevo.length -1) == "/"){
+        direccionNueva = direccionNuevo.concat(nombre);
+
+    } else{
+        direccionNueva = direccionNuevo.concat("/",nombre);
+    }
+
+    window.location.href = "?direccionViejo=" + direccionViejo + "&direccionNuevo=" + direccionNueva;
 }
 
 function copiarElemento(){
@@ -47,7 +61,7 @@ function copiarElemento(){
 
     var direccion = CopiarViejo.split("/");
     var nombre = direccion.pop();
-    var direccionNueva
+    var direccionNueva;
 
     if(CopiarNuevo.charAt(CopiarNuevo.length -1) == "/"){
         direccionNueva = CopiarNuevo.concat(nombre);
@@ -56,4 +70,15 @@ function copiarElemento(){
         direccionNueva = CopiarNuevo.concat("/",nombre);
     }
     window.location.href = "?CopiarViejo=" + CopiarViejo + "&nuevaDireccion=" + direccionNueva;
+}
+
+function verPermisos(){
+    var direccion = document.getElementById("verPermisos").value;
+    var arrayNombre = direccion.split("/");
+    var nombre = arrayNombre.pop();
+    direccion = arrayNombre.join("/");
+    window.location.href = "?infPermisos=" + direccion + "&nombre=" + nombre;
+}
+function cerrar(){
+    window.location.href = "?cerrar=" + "none";
 }
