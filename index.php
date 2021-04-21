@@ -101,7 +101,7 @@ include 'estructura.php'
                     <p style = "margin:-2px;"> Ingrese la dirección del elemento a cambiar:</p>
                     <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaCambiarNombre">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre para el elemento:</p>
-                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: nuevoNombre">
+                    <input id="nombreNuevo" type="text" class="form-control" placeholder="Ejemplo: nuevoNombre">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

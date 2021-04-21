@@ -75,7 +75,6 @@ if (isset($_GET["nombreIr"])) {
 if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
     $nombreNuevo = $_GET["nombreNuevo"];
     $nombreViejo = $_GET["nombreViejo"];
-    echo $nombreNuevo."<br>".$nombreViejo;
     rename($nombreViejo, $nombreNuevo);
 }
 
@@ -109,7 +108,6 @@ if (isset($_GET["direccionViejo"]) && isset($_GET["direccionNuevo"])) {
     $direccionNueva= $_GET["direccionNuevo"];
    
     AuxiliarCopiar($direccionAntigua, $direccionNueva);
-    echo "entró al if";
     if(is_dir($direccionAntigua)){
         auxiliarEliminar($direccionAntigua);
     }else{
@@ -126,8 +124,6 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
     $propietario;
     $grupo;
 
-    echo $infPermisos;
-    echo $nombre;
     exec("ls -l ".$infPermisos, $elementos);
 
     foreach($elementos as $elemento){ 
@@ -150,7 +146,6 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
             $titulo="no lo encontró";
         }
     }
-    echo $informacion;
 }
 
 if (isset($_GET["cerrar"])) {
