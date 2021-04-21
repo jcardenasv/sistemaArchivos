@@ -223,7 +223,7 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Ingrese la dirección del elemento al cual quiere ver sus permisos:</p>
+                    <p style = "margin:-2px;">Ingrese la dirección del elemento al cual quiere ver sus permisos:</p>
                     <input id="verPermisos" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaVerPermisos">   
                 </div>
                 <div class="modal-footer">
@@ -255,7 +255,9 @@ include 'estructura.php'
                         6: Permiso de lectura y escritura <br>
                         7: Todos los permisos <br>
                     </p>
-                    <p> Ponga el número según los permisos que quiera otorgar: </p> 
+                    <p style = "margin:-2px">Ingrese la dirección del elemento al cual quiere cambiar sus permisos:</p>
+                    <input id="cambiarPermisos" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaCambiarPermisos"> <br> 
+                    <p style = "margin-bottom:-1px"> Ponga el número según los permisos que quiera otorgar: </p> 
                     <p>
                     Usuario: <input id="numeroUsuario" type="number" placeholder="Usuario" > <br>
                     Grupo: &nbsp <input id="numeroGrupo" type="number" placeholder="Grupo"> <br>
@@ -265,7 +267,7 @@ include 'estructura.php'
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick="cambiarPermisos()" type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -289,7 +291,7 @@ include 'estructura.php'
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <button onclick='cambiarPropietario()' type="button" class="btn btn-primary">Aceptar</button>
                 </div>
             </div>
         </div>

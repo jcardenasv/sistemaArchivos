@@ -3,8 +3,7 @@
 $rutaActual = "/var/www/html";
 $mostrar = "none";
 
-function listarElementos($ruta)
-{
+function listarElementos($ruta){
 
     chdir($ruta); //Ruta es la dirección completa
     exec("ls -l", $elementos);
@@ -159,4 +158,17 @@ if (isset($_GET["cerrar"])) {
     $mostrar= $cerrar;
 }
 
+if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
+    $direccion = $_GET["direccionCambio"];
+    $permisos = $_GET["permisosCambio"];
+    exec('chmod '.$permisos.' '.$direccion);
+}
+
+if (isset($_GET["direccionPropietario"]) && isset($_GET["nombreUsuario"])) {
+    $direccionPropietario = $_GET["direccionPropietario"];
+    $nombreUsuario = $_GET["nombreUsuario"];
+    echo($direccionPropietario.'<br>'.$nombreUsuario);
+    chown($direccionPropietario, $nombreUsuario);
+    //exec('sudo chown '.$nombreUsuario.' '.$direccionPropietario);
+}
 ?>
