@@ -2,7 +2,7 @@
 //      /var/www/html/sistemaArchivos$ git commit -a -m "Alto cambio"
 $rutaActual = "/var/www/html";
 $mostrar = "none";
-$contraseña="1028";
+$contraseña="7532";
 function listarElementos($ruta){
 
     chdir($ruta); //Ruta es la dirección completa
@@ -67,6 +67,12 @@ function AuxiliarCopiar( $inicio, $destino ) {
     }
 }
 
+//If para funcion atrás
+if (isset($_GET["atras"])) {
+    $nombre = $_GET["atras"];
+    $rutaActual = $nombre;
+}
+
 //If para funcion ir
 if (isset($_GET["nombreIr"])) {
     $nombre = $_GET["nombreIr"];
@@ -77,12 +83,17 @@ if (isset($_GET["nombreIr"])) {
 if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
     $nombreNuevo = $_GET["nombreNuevo"];
     $nombreViejo = $_GET["nombreViejo"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
     rename($nombreViejo, $nombreNuevo);
+
 }
 //If para funcion crear
 if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
     $crear = $_GET["crear"];
     $tipo = $_GET["tipo"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
     if($tipo == "archivo"){
         touch($crear);
     }else{
@@ -94,6 +105,8 @@ if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
 if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
     $eliminar = $_GET["eliminar"];
     $tipo = $_GET["tipo"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
     if($tipo == "archivo"){
         unlink($eliminar);
     }else{
@@ -105,6 +118,8 @@ if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
 if (isset($_GET["CopiarViejo"]) && isset($_GET["nuevaDireccion"])) {
     $direccionAntigua = $_GET["CopiarViejo"];
     $direccionNueva= $_GET["nuevaDireccion"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
     AuxiliarCopiar($direccionAntigua, $direccionNueva);
 }
 
@@ -112,6 +127,8 @@ if (isset($_GET["CopiarViejo"]) && isset($_GET["nuevaDireccion"])) {
 if (isset($_GET["direccionViejo"]) && isset($_GET["direccionNuevo"])) {
     $direccionAntigua = $_GET["direccionViejo"];
     $direccionNueva= $_GET["direccionNuevo"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
    
     AuxiliarCopiar($direccionAntigua, $direccionNueva);
     if(is_dir($direccionAntigua)){
@@ -126,6 +143,8 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
     $mostrar="true";
     $infPermisos = $_GET["infPermisos"];
     $nombre = $_GET["nombre"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
 
     $titulo;
     $permisos;
@@ -143,7 +162,7 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
             for ($i = 1; $i <= 4; $i++) {
                 array_pop($datos);
             }
-            var_dump($datos);
+            
             $grupo=array_pop($datos);
             $propietario=array_pop($datos);
             array_pop($datos);
@@ -160,12 +179,16 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
 if (isset($_GET["cerrar"])) {
     $cerrar = $_GET["cerrar"];
     $mostrar= $cerrar;
+    $path = $_GET["path"];
+    $rutaActual = $path;
 }
 
 //If para funcion Cambiar permisos
 if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
     $direccion = $_GET["direccionCambio"];
     $permisos = $_GET["permisosCambio"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
     //exec('chmod '.$permisos.' '.$direccion);
     exec("echo ".$contraseña." | sudo -S chmod ".$permisos." ".$direccion);
 }
@@ -174,6 +197,8 @@ if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
 if (isset($_GET["direccionPropietario"]) && isset($_GET["nombreUsuario"])) {
     $direccionPropietario = $_GET["direccionPropietario"];
     $nombreUsuario = $_GET["nombreUsuario"];
+    $path = $_GET["path"];
+    $rutaActual = $path;
 
     exec("echo ".$contraseña." | sudo -S chown ".$nombreUsuario.":".$nombreUsuario." ".$direccionPropietario);
     

@@ -25,21 +25,22 @@ include 'estructura.php'
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav style="background-color:#9b9b9b;" class="navbar navbar-light">
         <form class="form-inline">
             <div class="input-group">
+                <button onclick="atras()" type="button" class="btn-outline-dark"> Atrás </button>
                 <div style="margin-right: 20px">
                     <input id="direccion" type="text" readonly="readonly" class="form-control" style="width: 300px" value= <?= $rutaActual ?>>   
                 </div>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalIr"> Ir </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarNombre"> Cambiar Nombre </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCrear"> Crear </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCopiar"> Copiar </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalMover"> Mover </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalInfPermisos"> Informacion Permisos </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPermisos"> Cambiar Permisos </button>
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPropietario"> Cambiar Propietario </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalIr"> Ir </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalCambiarNombre"> Cambiar Nombre </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalCrear"> Crear </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalEliminar"> Eliminar </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalCopiar"> Copiar </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalMover"> Mover </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalInfPermisos"> Informacion Permisos </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPermisos"> Cambiar Permisos </button>
+                <button type="button" class="btn-outline-dark" data-toggle="modal" data-target="#modalCambiarPropietario"> Cambiar Propietario </button>
 
             </div>
         </form>
@@ -283,7 +284,7 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;">Ingrese la dirección del elemento al que desea cambiarle el propietario:</p>
+                    <p style = "margin:-2px;">Ingrese la dirección del elemento al que desea cambiarle el propietario y el grupo:</p>
                     <input id="direccionPropietario" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/prueba">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nombre del usuario:</p>
                     <input id="nombreUsuario" type="text" class="form-control" placeholder="Ejemplo: usuario">
