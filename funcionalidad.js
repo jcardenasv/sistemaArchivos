@@ -8,6 +8,7 @@ function cambiarNombre() {
     var nombreNuevo = document.getElementById("nombreNuevo").value;
     var direccion = nombreViejo.split("/");
     direccion.pop();
+    var dir = direccion;
     direccion.push(nombreNuevo);
     direccion = direccion.join("/");
     window.location.href = "?nombreNuevo=" + direccion + "&nombreViejo=" + nombreViejo;

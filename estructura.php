@@ -2,7 +2,7 @@
 //      /var/www/html/sistemaArchivos$ git commit -a -m "Alto cambio"
 $rutaActual = "/var/www/html";
 $mostrar = "none";
-$contraseña="7532";
+$contraseña="1028";
 function listarElementos($ruta){
 
     chdir($ruta); //Ruta es la dirección completa
@@ -67,17 +67,19 @@ function AuxiliarCopiar( $inicio, $destino ) {
     }
 }
 
+//If para funcion ir
 if (isset($_GET["nombreIr"])) {
     $nombre = $_GET["nombreIr"];
     $rutaActual = $nombre;
 }
 
+//If para funcion cambiar nombre
 if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
     $nombreNuevo = $_GET["nombreNuevo"];
     $nombreViejo = $_GET["nombreViejo"];
     rename($nombreViejo, $nombreNuevo);
 }
-
+//If para funcion crear
 if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
     $crear = $_GET["crear"];
     $tipo = $_GET["tipo"];
@@ -88,6 +90,7 @@ if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
     }
 }
 
+//If para funcion eliminar
 if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
     $eliminar = $_GET["eliminar"];
     $tipo = $_GET["tipo"];
@@ -97,12 +100,15 @@ if (isset($_GET["eliminar"]) && isset($_GET["tipo"])) {
         auxiliarEliminar($eliminar);
     }
 }
+
+//If para funcion copiar
 if (isset($_GET["CopiarViejo"]) && isset($_GET["nuevaDireccion"])) {
     $direccionAntigua = $_GET["CopiarViejo"];
     $direccionNueva= $_GET["nuevaDireccion"];
     AuxiliarCopiar($direccionAntigua, $direccionNueva);
 }
 
+//If para funcion mover
 if (isset($_GET["direccionViejo"]) && isset($_GET["direccionNuevo"])) {
     $direccionAntigua = $_GET["direccionViejo"];
     $direccionNueva= $_GET["direccionNuevo"];
@@ -114,6 +120,8 @@ if (isset($_GET["direccionViejo"]) && isset($_GET["direccionNuevo"])) {
         unlink($direccionAntigua);
     }
 }
+
+//If para funcion Informacion permisos
 if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
     $mostrar="true";
     $infPermisos = $_GET["infPermisos"];
@@ -148,11 +156,13 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
     }
 }
 
+//If para cerrar en informacion permisos
 if (isset($_GET["cerrar"])) {
     $cerrar = $_GET["cerrar"];
     $mostrar= $cerrar;
 }
 
+//If para funcion Cambiar permisos
 if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
     $direccion = $_GET["direccionCambio"];
     $permisos = $_GET["permisosCambio"];
@@ -160,6 +170,7 @@ if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
     exec("echo ".$contraseña." | sudo -S chmod ".$permisos." ".$direccion);
 }
 
+//If para funcion cambiar propietario
 if (isset($_GET["direccionPropietario"]) && isset($_GET["nombreUsuario"])) {
     $direccionPropietario = $_GET["direccionPropietario"];
     $nombreUsuario = $_GET["nombreUsuario"];
