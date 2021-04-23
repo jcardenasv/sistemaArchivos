@@ -18,12 +18,12 @@ function listarElementos($ruta){
         } elseif ($letra == "d") {
             echo '<div style="margin-right: 20px; margin-bottom: 30px">
                         <p>' . end($datos) . '</p>
-                        <img src="dir1.png" id="imgDirectorio" height="120" width="120" style="margin-top: -15px">
+                        <img src="direccion.png" id="imgDirectorio" height="120" width="120" style="margin-top: -15px">
                     </div>';
         } elseif ($letra == "-") {
             echo '<div style="margin-right: 20px; margin-bottom: 30px">
                         <p>' . end($datos) . '</p>
-                        <img src="txt.png" id="imgArchivo" height="120" width="120" style="margin-top: -15px">
+                        <img src="txt.webp" id="imgArchivo" height="120" width="120" style="margin-top: -15px">
                     </div>';
         }
     }
