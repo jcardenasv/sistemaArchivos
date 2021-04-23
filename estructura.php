@@ -2,7 +2,7 @@
 //      /var/www/html/sistemaArchivos$ git commit -a -m "Alto cambio"
 $rutaActual = "/var/www/html";
 $mostrar = "none";
-
+$contraseña="7532";
 function listarElementos($ruta){
 
     chdir($ruta); //Ruta es la dirección completa
@@ -133,7 +133,7 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
         if($nombre == end($datos)){
             $titulo=array_pop($datos);
             for ($i = 1; $i <= 4; $i++) {
-                echo array_pop($datos);
+                array_pop($datos);
             }
             var_dump($datos);
             $grupo=array_pop($datos);
@@ -156,14 +156,15 @@ if (isset($_GET["cerrar"])) {
 if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
     $direccion = $_GET["direccionCambio"];
     $permisos = $_GET["permisosCambio"];
-    exec('chmod '.$permisos.' '.$direccion);
+    //exec('chmod '.$permisos.' '.$direccion);
+    exec("echo ".$contraseña." | sudo -S chmod ".$permisos." ".$direccion);
 }
 
 if (isset($_GET["direccionPropietario"]) && isset($_GET["nombreUsuario"])) {
     $direccionPropietario = $_GET["direccionPropietario"];
     $nombreUsuario = $_GET["nombreUsuario"];
-    echo($direccionPropietario.'<br>'.$nombreUsuario);
-    chown($direccionPropietario, $nombreUsuario);
-    //exec('sudo chown '.$nombreUsuario.' '.$direccionPropietario);
+
+    exec("echo ".$contraseña." | sudo -S chown ".$nombreUsuario.":".$nombreUsuario." ".$direccionPropietario);
+    
 }
 ?>
