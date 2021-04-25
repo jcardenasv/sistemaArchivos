@@ -99,8 +99,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;"> Ingrese la dirección del elemento a cambiar:</p>
-                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaCambiarNombre">
+                    <p style = "margin:-2px;"> Ingrese el nombre del elemento a cambiar: </p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="nombreViejo" type="text" class="form-control" placeholder="Ejemplo: nombreArchivoDirectorio">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre para el elemento:</p>
                     <input id="nombreNuevo" type="text" class="form-control" placeholder="Ejemplo: nuevoNombre">
                 </div>
@@ -122,10 +123,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;"> Ingrese la dirección donde quiere ubicar el nuevo elemento:</p>
-                    <input id="direccionCrear" type="text" class="form-control" placeholder="Ejemplo: /var/www/html">
-
+                    
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nuevo nombre del nuevo elemento:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
                     <input id="nombreCrear" type="text" class="form-control" placeholder="Ejemplo: nombre"><br>
                     
                     <p>Seleccione si quiere crear un archivo o un directorio:</p>
@@ -156,8 +156,9 @@ include 'estructura.php'
 
                     <input id="eliminarArchivo" type="radio" name="tipoEliminar" value="archivo" checked> Archivo <br>
                     <input id="eliminarDirectorio" type="radio" name="tipoEliminar" value="directorio"> Directorio  
-                    <p style="margin-top:20px; margin-bottom:-2px;">Ingrese la dirección del elemento a eliminar:</p>
-                    <input id="eliminar" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaEliminar">   
+                    <p style="margin-top:20px; margin-bottom:-2px;">Ingrese el nombre del elemento a eliminar:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="eliminar" type="text" class="form-control" placeholder="Ejemplo: nombreArchivoDirectorio">   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -177,8 +178,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;">Ingrese la direccion del elemento que desea copiar: </p>
-                    <input id="CopiarViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoACopiar">
+                    <p style = "margin:-2px;">Ingrese el nombre del elemento que desea copiar: </p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="CopiarViejo" type="text" class="form-control" placeholder="Ejemplo: elementoACopiar">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese la dirección donde desea copiar el elemento:</p>
                     <input id="CopiarNuevo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeCopia">
                     
@@ -201,8 +203,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;">Ingrese la dirección del elemento que desea mover:</p>
-                    <input id="direccionMoverViejo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/nombreElemento">
+                    <p style = "margin:-2px;">Ingrese el nombre del elemento que desea mover:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="direccionMoverViejo" type="text" class="form-control" placeholder="Ejemplo: nombreElementoAMover">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese la dirección donde se va a mover el elemento:</p>
                     <input id="direccionMoverNuevo" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/directorioDondeSeVaAMover">
                 </div>
@@ -224,8 +227,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;">Ingrese la dirección del elemento al cual quiere ver sus permisos:</p>
-                    <input id="verPermisos" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaVerPermisos">   
+                    <p style = "margin:-2px;">Ingrese el nombre del elemento al cual quiere ver sus permisos:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="verPermisos" type="text" class="form-control" placeholder="Ejemplo: elementoQueDeseaVerPermisos">   
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -256,8 +260,9 @@ include 'estructura.php'
                         6: Permiso de lectura y escritura <br>
                         7: Todos los permisos <br>
                     </p>
-                    <p style = "margin:-2px">Ingrese la dirección del elemento al cual quiere cambiar sus permisos:</p>
-                    <input id="cambiarPermisos" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/elementoQueDeseaCambiarPermisos"> <br> 
+                    <p style = "margin:-2px">Ingrese el nombre del elemento al cual quiere cambiar sus permisos:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="cambiarPermisos" type="text" class="form-control" placeholder="Ejemplo: nombreDirectorioArchivo"> <br> 
                     <p style = "margin-bottom:-1px"> Ponga el número según los permisos que quiera otorgar: </p> 
                     <p>
                     Usuario: <input id="numeroUsuario" type="number" placeholder="Usuario" > <br>
@@ -284,8 +289,9 @@ include 'estructura.php'
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p style = "margin:-2px;">Ingrese la dirección del elemento al que desea cambiarle el propietario y el grupo:</p>
-                    <input id="direccionPropietario" type="text" class="form-control" placeholder="Ejemplo: /var/www/html/prueba">
+                    <p style = "margin:-2px;">Ingrese el nombre del elemento al que desea cambiarle el propietario y el grupo:</p>
+                    <p style = "margin:-2px;">(Que se encuentre en la direccion actual) </p>
+                    <input id="direccionPropietario" type="text" class="form-control" placeholder="Ejemplo: nombreElemento">
                     <p style = "margin-top:15px; margin-bottom:-2px;">Ingrese el nombre del usuario:</p>
                     <input id="nombreUsuario" type="text" class="form-control" placeholder="Ejemplo: usuario">
                     

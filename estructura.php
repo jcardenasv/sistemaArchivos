@@ -2,7 +2,8 @@
 //      /var/www/html/sistemaArchivos$ git commit -a -m "Alto cambio"
 $rutaActual = "/var/www/html";
 $mostrar = "none";
-$contraseña="7532";
+$contraseña="1028";
+
 function listarElementos($ruta){
 
     chdir($ruta); //Ruta es la dirección completa
@@ -67,6 +68,10 @@ function AuxiliarCopiar( $inicio, $destino ) {
     }
 }
 
+function filtro($var){
+    return ($var !== "");
+}
+
 //If para funcion atrás
 if (isset($_GET["atras"])) {
     $nombre = $_GET["atras"];
@@ -88,6 +93,7 @@ if (isset($_GET["nombreNuevo"]) && isset($_GET["nombreViejo"])) {
     rename($nombreViejo, $nombreNuevo);
 
 }
+
 //If para funcion crear
 if (isset($_GET["crear"]) && isset($_GET["tipo"])) {
     $crear = $_GET["crear"];
@@ -153,16 +159,15 @@ if (isset($_GET["infPermisos"]) && isset($_GET["nombre"])) {
 
     exec("ls -l ".$infPermisos, $elementos);
 
-    foreach($elementos as $elemento){ 
+    foreach($elementos as $elemento){
         $datos = explode(" ", $elemento);
-        $datos= array_filter($datos);
+        $datos= array_filter($datos, "filtro");
 
         if($nombre == end($datos)){
             $titulo=array_pop($datos);
             for ($i = 1; $i <= 4; $i++) {
                 array_pop($datos);
             }
-            
             $grupo=array_pop($datos);
             $propietario=array_pop($datos);
             array_pop($datos);
@@ -189,7 +194,6 @@ if (isset($_GET["direccionCambio"]) && isset($_GET["permisosCambio"])) {
     $permisos = $_GET["permisosCambio"];
     $path = $_GET["path"];
     $rutaActual = $path;
-    //exec('chmod '.$permisos.' '.$direccion);
     exec("echo ".$contraseña." | sudo -S chmod ".$permisos." ".$direccion);
 }
 
