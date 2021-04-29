@@ -12,8 +12,10 @@ function atras(){
     direccion = document.getElementById("direccion").value;
     direccion = direccion.split("/");
     direccion.pop();
-    direccion = direccion.join("/");
-
+    direccion = direccion.join("/");    
+    if(direccion == ""){
+        direccion = "/";
+        }
     window.location.href = "?atras=" + direccion;
 }
 

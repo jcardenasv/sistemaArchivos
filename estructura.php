@@ -1,5 +1,5 @@
 <?php
-//      /var/www/html/sistemaArchivos$ git commit -a -m "Alto cambio"
+
 $rutaActual = "/var/www/html";
 $mostrar = "none";
 $contraseña="1028";
